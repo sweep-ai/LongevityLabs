@@ -1,10 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import LeadCaptureModal from './LeadCaptureModal'
+import { useModal } from '@/contexts/ModalContext'
 
 export default function ProblemSolution() {
-  const [showModal, setShowModal] = useState(false)
+  const { openModal } = useModal()
 
   const problems = [
     {
@@ -70,7 +69,7 @@ export default function ProblemSolution() {
 
           <div className="mt-12 text-center">
             <button
-              onClick={() => setShowModal(true)}
+              onClick={() => openModal('lead-magnet')}
               className="inline-flex items-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-display font-bold text-lg uppercase tracking-wider rounded-lg shadow-lg hover:shadow-primary/25 transition-all transform hover:-translate-y-0.5"
             >
               See How We Help
@@ -79,13 +78,6 @@ export default function ProblemSolution() {
           </div>
         </div>
       </section>
-
-      {showModal && (
-        <LeadCaptureModal 
-          leadType="lead-magnet"
-          onClose={() => setShowModal(false)}
-        />
-      )}
     </>
   )
 }

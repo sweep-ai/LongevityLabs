@@ -1,10 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import LeadCaptureModal from './LeadCaptureModal'
+import { useModal } from '@/contexts/ModalContext'
 
 export default function SocialProof() {
-  const [showModal, setShowModal] = useState(false)
+  const { openModal } = useModal()
 
   const testimonials = [
     {
@@ -115,7 +114,7 @@ export default function SocialProof() {
 
           <div className="mt-12 text-center">
             <button
-              onClick={() => setShowModal(true)}
+              onClick={() => openModal('coaching')}
               className="inline-flex items-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-display font-bold text-lg uppercase tracking-wider rounded-lg shadow-lg transition-all"
             >
               Join These Success Stories
@@ -124,13 +123,6 @@ export default function SocialProof() {
           </div>
         </div>
       </section>
-
-      {showModal && (
-        <LeadCaptureModal 
-          leadType="coaching"
-          onClose={() => setShowModal(false)}
-        />
-      )}
     </>
   )
 }

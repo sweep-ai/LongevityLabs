@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import LeadCaptureModal from './LeadCaptureModal'
+import { useModal } from '@/contexts/ModalContext'
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
-  const [showModal, setShowModal] = useState(false)
+  const { openModal } = useModal()
 
   const faqs = [
     {
@@ -91,7 +91,7 @@ export default function FAQ() {
               Book a free 15-minute clarity call with our intake specialist to see if you qualify.
             </p>
             <button
-              onClick={() => setShowModal(true)}
+              onClick={() => openModal('coaching')}
               className="w-full bg-primary hover:bg-primary-dark text-white font-display font-bold uppercase tracking-wider py-4 rounded-lg shadow-lg hover:shadow-primary/30 transition-all transform active:scale-95 flex items-center justify-center gap-2"
             >
               <span>Book Your Strategy Call</span>
@@ -103,13 +103,6 @@ export default function FAQ() {
           </div>
         </div>
       </section>
-
-      {showModal && (
-        <LeadCaptureModal 
-          leadType="coaching"
-          onClose={() => setShowModal(false)}
-        />
-      )}
     </>
   )
 }

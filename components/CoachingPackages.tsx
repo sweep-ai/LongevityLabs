@@ -1,11 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import LeadCaptureModal from './LeadCaptureModal'
+import { useModal } from '@/contexts/ModalContext'
 
 export default function CoachingPackages() {
-  const [showModal, setShowModal] = useState(false)
-  const [selectedPackage, setSelectedPackage] = useState<string | null>(null)
+  const { openModal } = useModal()
 
   const packages = [
     {
@@ -52,8 +50,7 @@ export default function CoachingPackages() {
   ]
 
   const handlePackageClick = (pkgName: string) => {
-    setSelectedPackage(pkgName)
-    setShowModal(true)
+    openModal('coaching')
   }
 
   return (
@@ -134,13 +131,6 @@ export default function CoachingPackages() {
           </div>
         </div>
       </section>
-
-      {showModal && (
-        <LeadCaptureModal 
-          leadType="coaching"
-          onClose={() => setShowModal(false)}
-        />
-      )}
     </>
   )
 }

@@ -1,15 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-import LeadCaptureModal from './LeadCaptureModal'
+import { useModal } from '@/contexts/ModalContext'
 
 export default function Hero() {
-  const [showModal, setShowModal] = useState(false)
-  const [leadType, setLeadType] = useState<'coaching' | 'lead-magnet' | 'email'>('email')
+  const { openModal } = useModal()
 
   const handleCTAClick = (type: 'coaching' | 'lead-magnet' | 'email') => {
-    setLeadType(type)
-    setShowModal(true)
+    openModal(type)
   }
 
   return (
@@ -64,22 +61,18 @@ export default function Hero() {
             </button>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative w-full max-w-md mx-auto mt-8 lg:mt-0 lg:max-w-lg aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-gray-800 group">
-            <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-              <span className="material-icons text-6xl text-gray-700">fitness_center</span>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-90"></div>
-            <div className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl">
-              <div className="flex items-center gap-3">
-                <div className="bg-primary p-2 rounded-full">
-                  <span className="material-icons text-white text-xl">fitness_center</span>
-                </div>
-                <div>
-                  <p className="text-white font-bold text-sm uppercase">Dwayne Dunning</p>
-                  <p className="text-gray-300 text-xs">Founder, Longevity Lab</p>
-                </div>
-              </div>
+          {/* YouTube Video Embed */}
+          <div className="relative w-full max-w-xs mx-auto mt-8 lg:mt-0 rounded-2xl overflow-hidden shadow-2xl border border-gray-800">
+            <div className="relative w-full" style={{ aspectRatio: '9/16' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/tsbrvw7DVo8?si=YbCtMQMET4eGMuXo&controls=1&autoplay=1&mute=1&loop=1&playlist=tsbrvw7DVo8"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>
@@ -109,13 +102,6 @@ export default function Hero() {
           </div>
         </div>
       </section>
-
-      {showModal && (
-        <LeadCaptureModal 
-          leadType={leadType}
-          onClose={() => setShowModal(false)}
-        />
-      )}
     </>
   )
 }

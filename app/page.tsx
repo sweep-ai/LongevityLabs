@@ -7,20 +7,25 @@ import CoachingPackages from '@/components/CoachingPackages'
 import FAQ from '@/components/FAQ'
 import FinalCTA from '@/components/FinalCTA'
 import Navigation from '@/components/Navigation'
+import { ModalProvider } from '@/contexts/ModalContext'
+import ModalContainer from '@/components/ModalContainer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Navigation />
-      <Hero />
-      <ProblemSolution />
-      <SocialProof />
-      <About />
-      <LeadMagnets />
-      <CoachingPackages />
-      <FAQ />
-      <FinalCTA />
-    </main>
+    <ModalProvider>
+      <main className="min-h-screen">
+        <Navigation />
+        <Hero />
+        <ProblemSolution />
+        <SocialProof />
+        <About />
+        <LeadMagnets />
+        <CoachingPackages />
+        <FAQ />
+        <FinalCTA />
+        <ModalContainer />
+      </main>
+    </ModalProvider>
   )
 }
 

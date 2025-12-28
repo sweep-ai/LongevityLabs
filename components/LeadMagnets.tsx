@@ -1,10 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import LeadCaptureModal from './LeadCaptureModal'
+import { useModal } from '@/contexts/ModalContext'
 
 export default function LeadMagnets() {
-  const [showModal, setShowModal] = useState(false)
+  const { openModal } = useModal()
 
   const leadMagnets = [
     {
@@ -63,7 +62,7 @@ export default function LeadMagnets() {
                     {magnet.description}
                   </p>
                   <button
-                    onClick={() => setShowModal(true)}
+                    onClick={() => openModal('lead-magnet')}
                     className="w-full bg-primary hover:bg-primary-dark text-white font-display font-bold text-lg uppercase py-3.5 px-6 rounded-lg shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     Download Now
@@ -82,13 +81,6 @@ export default function LeadMagnets() {
           </div>
         </div>
       </section>
-
-      {showModal && (
-        <LeadCaptureModal 
-          leadType="lead-magnet"
-          onClose={() => setShowModal(false)}
-        />
-      )}
     </>
   )
 }

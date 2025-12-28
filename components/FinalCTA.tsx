@@ -1,11 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import LeadCaptureModal from './LeadCaptureModal'
+import { useModal } from '@/contexts/ModalContext'
 
 export default function FinalCTA() {
-  const [showCoachingModal, setShowCoachingModal] = useState(false)
-  const [showEmailModal, setShowEmailModal] = useState(false)
+  const { openModal } = useModal()
 
   return (
     <>
@@ -20,13 +18,13 @@ export default function FinalCTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto mb-8">
             <button
-              onClick={() => setShowCoachingModal(true)}
+              onClick={() => openModal('coaching')}
               className="w-full bg-primary hover:bg-primary-dark text-white font-display font-bold uppercase text-lg py-4 px-6 rounded-lg shadow-lg transform transition hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark"
             >
               Apply for Coaching
             </button>
             <button
-              onClick={() => setShowEmailModal(true)}
+              onClick={() => openModal('email')}
               className="w-full bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white font-display font-bold uppercase text-lg py-4 px-6 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark"
             >
               Get Free Resources
@@ -87,20 +85,6 @@ export default function FinalCTA() {
           </div>
         </div>
       </footer>
-
-      {showCoachingModal && (
-        <LeadCaptureModal
-          leadType="coaching"
-          onClose={() => setShowCoachingModal(false)}
-        />
-      )}
-
-      {showEmailModal && (
-        <LeadCaptureModal
-          leadType="email"
-          onClose={() => setShowEmailModal(false)}
-        />
-      )}
     </>
   )
 }
