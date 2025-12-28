@@ -190,35 +190,35 @@ export default function LeadCaptureModal({ leadType, onClose }: LeadCaptureModal
             <>
               <div>
                 <input
-                  {...register('phone')}
+                  {...register('phone' as any)}
                   type="tel"
                   placeholder="Phone Number"
                   className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary"
                 />
-                {errors.phone && (
-                  <p className="text-primary text-xs mt-1">{errors.phone.message}</p>
+                {(errors as any).phone && (
+                  <p className="text-primary text-xs mt-1">{(errors as any).phone.message}</p>
                 )}
               </div>
               <div>
                 <textarea
-                  {...register('goals')}
+                  {...register('goals' as any)}
                   placeholder="What are your primary fitness goals?"
                   rows={3}
                   className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary resize-none"
                 />
-                {errors.goals && (
-                  <p className="text-primary text-xs mt-1">{errors.goals.message}</p>
+                {(errors as any).goals && (
+                  <p className="text-primary text-xs mt-1">{(errors as any).goals.message}</p>
                 )}
               </div>
               <div>
                 <textarea
-                  {...register('currentChallenges')}
+                  {...register('currentChallenges' as any)}
                   placeholder="What challenges are you currently facing?"
                   rows={3}
                   className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary resize-none"
                 />
-                {errors.currentChallenges && (
-                  <p className="text-primary text-xs mt-1">{errors.currentChallenges.message}</p>
+                {(errors as any).currentChallenges && (
+                  <p className="text-primary text-xs mt-1">{(errors as any).currentChallenges.message}</p>
                 )}
               </div>
             </>
@@ -228,13 +228,16 @@ export default function LeadCaptureModal({ leadType, onClose }: LeadCaptureModal
             <div>
               <label className="block text-gray-400 text-sm mb-2">Select Resource(s):</label>
               <select
-                {...register('resourceType')}
+                {...register('resourceType' as any)}
                 className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary"
               >
                 <option value="trt-checklist">TRT Optimization Checklist</option>
                 <option value="macro-calculator">Advanced Macro Calculator</option>
                 <option value="both">Both Resources</option>
               </select>
+              {(errors as any).resourceType && (
+                <p className="text-primary text-xs mt-1">{(errors as any).resourceType.message}</p>
+              )}
             </div>
           )}
 
