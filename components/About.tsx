@@ -1,20 +1,39 @@
+'use client'
+
 export default function About() {
   return (
     <section id="about" className="py-16 lg:py-24 bg-surface-dark border-t border-gray-800">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary shadow-xl ring-4 ring-black/20 mb-6 bg-gray-800 flex items-center justify-center">
-            <span className="material-icons text-6xl text-gray-700">person</span>
+          <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary shadow-xl ring-4 ring-black/20 mb-6 bg-gray-800">
+            <img
+              src="/assets/headshot.jpg"
+              alt="Dwayne Dunning"
+              className="w-full h-full object-cover object-top scale-125"
+              style={{ transform: 'scale(1.25) translateY(-15%)' }}
+              onError={(e) => {
+                // Fallback if image doesn't exist
+                e.currentTarget.style.display = 'none'
+                e.currentTarget.parentElement?.classList.add('flex', 'items-center', 'justify-center')
+                const fallback = document.createElement('span')
+                fallback.className = 'material-icons text-6xl text-gray-700'
+                fallback.textContent = 'person'
+                e.currentTarget.parentElement?.appendChild(fallback)
+              }}
+            />
           </div>
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-white mb-2 uppercase leading-tight">
             Dwayne Dunning
           </h2>
           <p className="text-primary font-bold text-lg tracking-wider uppercase mb-6">
-            Your Guide to a Third Path
+            Head Coach
           </p>
           <div className="prose prose-lg dark:prose-invert mx-auto text-gray-400 leading-relaxed max-w-2xl">
             <p>
-              I help men 35+ reclaim their vitality. In a world pushing mediocrity, the Longevity Lab is your sanctuary for hormone optimization, elite fitness, and mental clarity. We don't just age; we evolve.
+              I help men 35+ optimize their hormones through The Third Path. Most men over 35 have medium to low testosterone as levels naturally decline with age. My approach is simple: get your blood work done, find out where your testosterone is at, and elevate it to higher optimal ranges.
+            </p>
+            <p className="mt-4">
+              This isn't about reckless drug use. This is about optimizing your performance and lifestyle while making sure your health is never compromised.
             </p>
           </div>
         </div>
@@ -43,7 +62,7 @@ export default function About() {
                 Hormone Optimization
               </h3>
               <p className="text-sm text-gray-400">
-                Data-driven approaches to maximize testosterone and energy levels naturally.
+                Therapeutic hormone optimization to elevate testosterone to higher optimal ranges safely.
               </p>
             </div>
           </div>
@@ -69,16 +88,38 @@ export default function About() {
           </h3>
           <div className="space-y-4 text-gray-400 text-sm leading-relaxed">
             <p>
-              Most men accept the decline. They see their energy fade, their waistlines expand, and their drive diminish, calling it "part of getting older." That is the First Path: Resignation.
+              The Third Path isn't about staying completely natural, and it's not about blasting heavy steroid cycles. It's the middle ground - therapeutic hormone optimization for men 35+.
             </p>
             <p>
-              Others fight blindly, burning out on fad diets and unsustainable workouts that leave them injured and exhausted. That is the Second Path: Struggle.
+              Here's the reality: most men over 35 have medium to low testosterone as levels naturally decline with age. Some have high levels, but they're the minority.
             </p>
-            <p className="text-white font-medium italic border-l-2 border-gray-700 pl-4 py-2">
-              "I created the Longevity Lab to offer a Third Path: Optimization. It's about working smarter with your biology, not against it."
+            <p className="text-white font-medium">
+              The benefits of optimizing to higher optimal ranges:
             </p>
-            <p>
-              With over 15 years in the trenches of high-performance coaching, I've decoded the specific needs of the aging male body. My mission is simple: to help you build a body and mind that commands respect.
+            <ul className="list-none space-y-2 text-gray-300">
+              <li className="flex items-start">
+                <span className="text-primary mr-2">∙</span>
+                <span>Better performance</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-primary mr-2">∙</span>
+                <span>Faster recovery</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-primary mr-2">∙</span>
+                <span>Improved sleep</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-primary mr-2">∙</span>
+                <span>Higher libido</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-primary mr-2">∙</span>
+                <span>Greater sense of well-being</span>
+              </li>
+            </ul>
+            <p className="mt-4">
+              This isn't about reckless drug use. This is about optimizing your performance and lifestyle while making sure your health is never compromised. This is The Third Path.
             </p>
           </div>
         </div>

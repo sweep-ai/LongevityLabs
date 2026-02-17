@@ -9,44 +9,45 @@ export default function Navigation() {
 
   const handleApplyClick = (e: React.MouseEvent) => {
     e.preventDefault()
-    openModal('coaching')
-    setIsMenuOpen(false) // Close mobile menu if open
+    openModal('apply-coaching')
+    setIsMenuOpen(false)
   }
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0 flex items-center">
+        <div className="flex justify-between items-center h-24">
+          <div className="flex-shrink-0 flex items-center gap-4">
             <img 
-              alt="Longevity Lab Logo" 
-              className="h-10 w-auto" 
-              src="/assets/LongevityLab.png"
+              alt="The Third Path Logo" 
+              className="h-20 w-auto" 
+              src="/assets/Logo.jpg"
               onError={(e) => {
                 // Fallback if image doesn't exist
                 e.currentTarget.style.display = 'none'
               }}
             />
-            <span className="ml-3 font-display font-bold text-2xl tracking-wide uppercase text-white">
-              Longevity Lab
+            <span className="font-display font-bold text-xl sm:text-2xl tracking-wide uppercase text-white">
+              THE THIRD PATH
             </span>
           </div>
           <div className="hidden md:flex items-center space-x-6">
             <a href="#about" className="text-gray-300 hover:text-primary transition-colors">
               About
             </a>
-            <a href="#packages" className="text-gray-300 hover:text-primary transition-colors">
+            <a href="#programs" className="text-gray-300 hover:text-primary transition-colors">
               Programs
             </a>
             <a href="#faq" className="text-gray-300 hover:text-primary transition-colors">
               FAQ
             </a>
-            <button
+            <a
+              href="#apply"
               onClick={handleApplyClick}
               className="px-4 py-2 bg-primary hover:bg-primary-dark text-white font-bold rounded transition-colors"
             >
-              Apply Now
-            </button>
+              Apply for Coaching
+            </a>
           </div>
           <button 
             className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-primary focus:outline-none"
@@ -62,14 +63,15 @@ export default function Navigation() {
         <div className="md:hidden bg-black/95 border-t border-gray-800">
           <div className="px-4 py-4 space-y-4">
             <a href="#about" className="block text-gray-300 hover:text-primary">About</a>
-            <a href="#packages" className="block text-gray-300 hover:text-primary">Programs</a>
+            <a href="#programs" className="block text-gray-300 hover:text-primary">Programs</a>
             <a href="#faq" className="block text-gray-300 hover:text-primary">FAQ</a>
-            <button
+            <a
+              href="#apply"
               onClick={handleApplyClick}
               className="block w-full text-center px-4 py-2 bg-primary hover:bg-primary-dark text-white font-bold rounded"
             >
-              Apply Now
-            </button>
+              Apply for Coaching
+            </a>
           </div>
         </div>
       )}

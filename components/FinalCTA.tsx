@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useModal } from '@/contexts/ModalContext'
 
 export default function FinalCTA() {
@@ -18,17 +19,18 @@ export default function FinalCTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto mb-8">
             <button
-              onClick={() => openModal('coaching')}
-              className="w-full bg-primary hover:bg-primary-dark text-white font-display font-bold uppercase text-lg py-4 px-6 rounded-lg shadow-lg transform transition hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark"
+              type="button"
+              onClick={() => openModal('apply-coaching')}
+              className="w-full bg-primary hover:bg-primary-dark text-white font-display font-bold uppercase text-lg py-4 px-6 rounded-lg shadow-lg transform transition hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark text-center"
             >
               Apply for Coaching
             </button>
-            <button
-              onClick={() => openModal('email')}
-              className="w-full bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white font-display font-bold uppercase text-lg py-4 px-6 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark"
+            <Link
+              href="#resources"
+              className="w-full bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white font-display font-bold uppercase text-lg py-4 px-6 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-dark text-center"
             >
               Get Free Resources
-            </button>
+            </Link>
           </div>
 
           <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
@@ -42,9 +44,9 @@ export default function FinalCTA() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center space-y-8">
           <div className="relative w-32 h-32 md:w-40 md:h-40">
             <img
-              alt="Longevity Lab Logo"
+              alt="The Third Path Logo"
               className="w-full h-full object-contain filter drop-shadow-lg opacity-90 hover:opacity-100 transition-opacity"
-              src="/assets/LongevityLab.png"
+              src="/assets/Logo.jpg"
             />
           </div>
           <div className="flex flex-col space-y-4 w-full">
@@ -71,7 +73,7 @@ export default function FinalCTA() {
               </a>
             </div>
             <p className="text-sm text-gray-500">
-              © 2024 Longevity Lab. All rights reserved.
+              © 2024 The Third Path. All rights reserved.
             </p>
             <div className="flex justify-center space-x-4 text-xs font-medium text-gray-600 uppercase tracking-wider">
               <a className="hover:text-primary transition-colors" href="#">

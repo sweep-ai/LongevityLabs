@@ -7,19 +7,104 @@ interface LeadData {
   firstName: string
   lastName: string
   email: string
-  age: string
+  age?: string
   phone?: string
   goals?: string
-  currentChallenges?: string
+  preferredTime?: string
   resourceType?: 'trt-checklist' | 'macro-calculator' | 'both'
-  leadType: 'coaching' | 'lead-magnet' | 'email'
+  leadType: 'book-call' | 'lead-magnet' | 'email' | 'apply-coaching'
+  fitnessExperience?: string
+  fitnessGoals?: string
+  instagram?: string
+  resourceUrl?: string
+  resourceName?: string
 }
 
 export async function POST(request: NextRequest) {
   try {
     const data: LeadData = await request.json()
 
-    // Validate required fields
+    // Forward to Google Sheets for apply-coaching, lead-magnet, and email
+    const sheetsLeadTypes = ['apply-coaching', 'lead-magnet', 'email'] as const
+    if (sheetsLeadTypes.includes(data.leadType as typeof sheetsLeadTypes[number])) {
+      const sourceLabel =
+        data.leadType === 'apply-coaching'
+          ? 'Apply for Coaching'
+          : data.leadType === 'lead-magnet'
+          ? 'Free Resource'
+          : 'Newsletter'
+      const payload = {
+        timestamp: new Date().toISOString(),
+        source: sourceLabel,
+        fitnessExperience: data.fitnessExperience ?? '',
+        fitnessGoals: data.fitnessGoals ?? '',
+        firstName: data.firstName ?? '',
+        lastName: data.lastName ?? '',
+        email: data.email ?? '',
+        phone: data.phone ?? '',
+        instagram: data.instagram ?? '',
+        resource: data.leadType === 'lead-magnet' ? (data.resourceUrl ?? '') : '',
+        resourceName: data.leadType === 'lead-magnet' ? (data.resourceName ?? '') : '',
+      }
+      const webAppUrl = process.env.GOOGLE_SHEETS_WEB_APP_URL
+      if (webAppUrl) {
+        try {
+          const res = await fetch(webAppUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          })
+          const text = await res.text()
+          if (!res.ok) {
+            const wrongUrl =
+              res.status === 404 ||
+              text.includes('Page Not Found') ||
+              text.includes('does not exist')
+            if (wrongUrl) {
+              console.error(
+                'GOOGLE_SHEETS_WEB_APP_URL appears wrong. Use the Web App URL from Apps Script (Deploy → Deploy as web app), e.g. https://script.google.com/macros/s/.../exec — NOT the spreadsheet URL (docs.google.com/...).'
+              )
+            }
+            console.error('Google Sheets Web App error:', res.status, text.slice(0, 200))
+            return NextResponse.json(
+              { error: 'Failed to save submission' },
+              { status: 502 }
+            )
+          }
+          let parsed: { success?: boolean }
+          try {
+            parsed = JSON.parse(text)
+          } catch {
+            parsed = {}
+          }
+          if (parsed?.success !== true) {
+            console.error('Google Sheets Web App returned 200 but not { success: true }: ', text.slice(0, 300))
+            return NextResponse.json(
+              { error: 'Failed to save submission' },
+              { status: 502 }
+            )
+          }
+        } catch (fetchError) {
+          console.error('Google Sheets Web App fetch failed:', fetchError)
+          return NextResponse.json(
+            { error: 'Failed to save submission' },
+            { status: 502 }
+          )
+        }
+      } else {
+        console.warn('GOOGLE_SHEETS_WEB_APP_URL not set — submission logged only:', payload)
+      }
+
+      if (data.leadType === 'apply-coaching') {
+        return NextResponse.json({ success: true, message: 'Application received. We will be in contact soon.' })
+      }
+      if (data.leadType === 'lead-magnet') {
+        return NextResponse.json({ success: true, message: 'Check your email for download links.' })
+      }
+      return NextResponse.json({ success: true, message: 'Welcome to the Longevity Lab community!' })
+    }
+
+    // Validate required fields for other lead types (e.g. book-call)
     if (!data.email || !data.firstName || !data.lastName) {
       return NextResponse.json(
         { error: 'Missing required fields' },
@@ -46,7 +131,7 @@ export async function POST(request: NextRequest) {
     // await saveLeadToDatabase(data)
 
     // TODO: Segment leads based on type
-    // - Coaching applications: Hot leads → immediate follow-up
+    // - Call bookings: Hot leads → immediate follow-up and calendar scheduling
     // - Lead magnets: Warm leads → nurture sequence
     // - Email list: Cold leads → general newsletter
 
@@ -58,14 +143,14 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
     })
 
-    // Send different responses based on lead type
-    if (data.leadType === 'coaching') {
-      // Hot lead - coaching application
+    // Send different responses based on lead type (apply-coaching handled above)
+    if (data.leadType === 'book-call') {
+      // Hot lead - booking a call
       // TODO: Send immediate notification to Dwayne/team
-      // TODO: Send confirmation email to lead
+      // TODO: Send confirmation email to lead with calendar link
       return NextResponse.json({
         success: true,
-        message: 'Application received. We\'ll be in touch within 24 hours.',
+        message: 'Call request received. We\'ll be in touch within 24 hours to schedule.',
       })
     } else if (data.leadType === 'lead-magnet') {
       // Warm lead - lead magnet download
@@ -129,4 +214,5 @@ async function saveLeadToDatabase(data: LeadData) {
   //   created_at: new Date().toISOString(),
   // })
 }
+
 

@@ -141,3 +141,5 @@ function getEmailTemplate(template: string, data: any): string {
   return templates[template] || templates.newsletter
 }
 
+
+

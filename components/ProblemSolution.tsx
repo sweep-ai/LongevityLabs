@@ -21,7 +21,7 @@ export default function ProblemSolution() {
     {
       icon: 'biotech',
       title: 'Hormonal Imbalance & Aging',
-      description: 'Testosterone drops naturally, but lifestyle accelerates it. Don\'t let your physiology work against you.',
+      description: 'When nutrition & lifestyle isn\'t enough, pharmacology changes the game. Testosterone drops naturally, but lifestyle accelerates it. Don\'t let your physiology work against you.',
       solution: 'Hormone Optimization Strategy',
     },
   ]
@@ -65,16 +65,6 @@ export default function ProblemSolution() {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <button
-              onClick={() => openModal('lead-magnet')}
-              className="inline-flex items-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-display font-bold text-lg uppercase tracking-wider rounded-lg shadow-lg hover:shadow-primary/25 transition-all transform hover:-translate-y-0.5"
-            >
-              See How We Help
-              <span className="material-icons ml-2">arrow_forward</span>
-            </button>
           </div>
         </div>
       </section>

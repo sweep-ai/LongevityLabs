@@ -7,40 +7,46 @@ export default function SocialProof() {
 
   const testimonials = [
     {
-      name: 'Mark D.',
-      age: 42,
-      role: 'CEO',
-      quote: 'I thought my prime was behind me. 12 weeks later, I have more energy for my business and my kids than I did in my 20s.',
+      name: 'Lorna',
+      age: null,
+      role: 'Former Bodybuilder',
+      quote: 'After years of restrictive diets and destroyed metabolism, I finally found freedom. In 5 months, I dropped 17kg and completely recomposed my body. No more 15,000 steps or hours of cardio - just smart training and proper nutrition. My metabolism is fixed and my confidence is back.',
       results: {
-        weight: 'Lost 22 lbs',
-        bodyFat: '24% → 14%',
+        weight: 'Lost 17kg',
+        bodyFat: '88kg → 71kg',
       },
-      badge: 'Regained Energy',
-      icon: 'bolt',
+      badge: 'Metabolism Fixed',
+      icon: 'trending_up',
+      beforeImage: '/assets/tranfo2.jpg',
+      afterImage: '/assets/tranfo2.jpg',
     },
     {
-      name: 'James R.',
-      age: 38,
-      role: 'Consultant',
-      quote: 'The "Third Path" approach is no joke. I didn\'t just lose gut fat, I built real, functional strength without spending hours in the gym.',
-      results: {
-        weight: 'Deadlift +100lbs',
-        bodyFat: 'Waist: 36" → 31"',
-      },
-      badge: 'Optimized Physique',
-      icon: 'fitness_center',
-    },
-    {
-      name: 'Robert T.',
+      name: 'Phillip',
       age: 51,
-      role: 'Entrepreneur',
-      quote: 'Brain fog is gone. My sleep is dialed in. I feel like a weapon again. This program is the blueprint for aging well.',
+      role: 'Professional',
+      quote: 'At 51, I thought it was too late. But tracking my food clicked after two weeks, and the results speak for themselves. Down 14kg in 12 weeks - no TRT, no drugs. Just proper nutrition and training 3 days a week. I feel stronger and younger than I have in years.',
       results: {
-        weight: 'Testosterone: 850ng',
-        bodyFat: 'Up from 320ng',
+        weight: 'Lost 14kg',
+        bodyFat: '12 weeks',
       },
-      badge: 'T-Levels 2x',
-      icon: 'favorite',
+      badge: 'Age is Just a Number',
+      icon: 'fitness_center',
+      beforeImage: '/assets/transfo3.jpg',
+      afterImage: '/assets/transfo3.jpg',
+    },
+    {
+      name: 'Mickey',
+      age: null,
+      role: 'Athlete',
+      quote: 'I came to Dwayne with one goal: get absolutely jacked for my first photoshoot. Over 16 weeks, we completely recomped my body. The transformation was everything I hoped for. When I\'m ready to get back in shape, I know exactly where I\'m going.',
+      results: {
+        weight: '16 Week Recomp',
+        bodyFat: 'Photoshoot Ready',
+      },
+      badge: 'Photoshoot Ready',
+      icon: 'camera_alt',
+      beforeImage: '/assets/transfo4.jpg',
+      afterImage: '/assets/transfo4.jpg',
     },
   ]
 
@@ -51,10 +57,10 @@ export default function SocialProof() {
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold uppercase tracking-tight text-white mb-4">
               Proven Results: <br className="sm:hidden"/>
-              <span className="text-primary">Men 35+ Transformed</span>
+              <span className="text-primary">Real Transformations</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg mt-4">
-              Real stories from high-performing men who reclaimed their vitality.
+              Real stories from clients who transformed their bodies and reclaimed their vitality.
             </p>
           </div>
 
@@ -64,16 +70,36 @@ export default function SocialProof() {
                 key={index}
                 className="bg-surface-dark border border-gray-800 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1"
               >
-                {/* Before/After Image Placeholder */}
-                <div className="grid grid-cols-2 gap-0.5 h-48 relative">
-                  <div className="relative h-full w-full bg-gray-800 overflow-hidden flex items-center justify-center">
-                    <span className="material-icons text-4xl text-gray-700">person</span>
+                {/* Before/After Images */}
+                <div className="grid grid-cols-2 gap-0.5 h-64 md:h-80 relative">
+                  <div className="relative h-full w-full bg-gray-800 overflow-hidden">
+                    {(testimonial as any).beforeImage ? (
+                      <img 
+                        src={(testimonial as any).beforeImage} 
+                        alt="Before" 
+                        className="w-full h-full object-cover filter grayscale contrast-125 opacity-90"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span className="material-icons text-4xl text-gray-700">person</span>
+                      </div>
+                    )}
                     <span className="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">
                       Before
                     </span>
                   </div>
-                  <div className="relative h-full w-full bg-gray-800 overflow-hidden flex items-center justify-center">
-                    <span className="material-icons text-4xl text-primary">person</span>
+                  <div className="relative h-full w-full bg-gray-800 overflow-hidden">
+                    {(testimonial as any).afterImage ? (
+                      <img 
+                        src={(testimonial as any).afterImage} 
+                        alt="After" 
+                        className="w-full h-full object-cover filter contrast-110"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span className="material-icons text-4xl text-primary">person</span>
+                      </div>
+                    )}
                     <span className="absolute top-2 right-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">
                       After
                     </span>
@@ -98,7 +124,7 @@ export default function SocialProof() {
                           {testimonial.name}
                         </h4>
                         <p className="text-xs text-gray-500 font-medium">
-                          Age {testimonial.age} • {testimonial.role}
+                          {testimonial.age ? `Age ${testimonial.age} • ` : ''}{testimonial.role}
                         </p>
                       </div>
                       <div className="text-right">
@@ -114,10 +140,11 @@ export default function SocialProof() {
 
           <div className="mt-12 text-center">
             <button
-              onClick={() => openModal('coaching')}
+              type="button"
+              onClick={() => openModal('apply-coaching')}
               className="inline-flex items-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-display font-bold text-lg uppercase tracking-wider rounded-lg shadow-lg transition-all"
             >
-              Join These Success Stories
+              Apply for Coaching
               <span className="material-icons ml-2">arrow_forward</span>
             </button>
           </div>

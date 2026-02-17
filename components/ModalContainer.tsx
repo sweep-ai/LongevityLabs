@@ -2,12 +2,19 @@
 
 import { useModal } from '@/contexts/ModalContext'
 import LeadCaptureModal from './LeadCaptureModal'
+import ApplyForCoachingModal from './ApplyForCoachingModal'
 
 export default function ModalContainer() {
-  const { isModalOpen, leadType, closeModal } = useModal()
+  const { isModalOpen, leadType, redirectUrl, resourceTitle, closeModal } = useModal()
 
   if (!isModalOpen) return null
 
-  return <LeadCaptureModal leadType={leadType} onClose={closeModal} />
+  if (leadType === 'apply-coaching') {
+    return <ApplyForCoachingModal onClose={closeModal} />
+  }
+
+  return <LeadCaptureModal leadType={leadType} redirectUrl={redirectUrl} resourceTitle={resourceTitle} onClose={closeModal} />
 }
+
+
 

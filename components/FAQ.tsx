@@ -91,10 +91,11 @@ export default function FAQ() {
               Book a free 15-minute clarity call with our intake specialist to see if you qualify.
             </p>
             <button
-              onClick={() => openModal('coaching')}
+              type="button"
+              onClick={() => openModal('apply-coaching')}
               className="w-full bg-primary hover:bg-primary-dark text-white font-display font-bold uppercase tracking-wider py-4 rounded-lg shadow-lg hover:shadow-primary/30 transition-all transform active:scale-95 flex items-center justify-center gap-2"
             >
-              <span>Book Your Strategy Call</span>
+              <span>Apply for Coaching</span>
               <span className="material-icons text-sm">arrow_forward</span>
             </button>
             <p className="mt-3 text-xs text-gray-500">

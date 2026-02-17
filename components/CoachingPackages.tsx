@@ -49,8 +49,8 @@ export default function CoachingPackages() {
     },
   ]
 
-  const handlePackageClick = (pkgName: string) => {
-    openModal('coaching')
+  const handlePackageClick = (_pkgName: string) => {
+    openModal('apply-coaching')
   }
 
   return (
