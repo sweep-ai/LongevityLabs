@@ -29,13 +29,12 @@ export default function Hero() {
 
               {/* Headline */}
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight text-white mb-6 uppercase leading-none">
-                THE THIRD PATH: <span className="text-primary">HORMONE OPTIMIZATION</span>
+                THE THIRD PATH: <span className="text-primary"> <br className="hidden sm:block"/>NUTRITION | TRAINING | HORMONES</span>
               </h1>
 
               {/* Value Proposition */}
               <p className="mt-4 max-w-3xl text-lg sm:text-xl text-gray-300 mb-6 leading-relaxed mx-auto font-medium">
-                Therapeutic hormone optimization for men 35+.<br className="hidden sm:block"/>
-                Not natural. Not heavy cycles. The middle ground.
+              A system that uses single ingredient whole foods. Heavy progressive overload training methods & hormone optimisation using blood work as the key driver for high level results 
               </p>
 
               {/* CTAs */}

@@ -20,9 +20,9 @@ export default function Programs() {
       title: 'Muscle Architecture',
       description: 'Build functional strength in 45 minutes, 3-4 times per week.',
       features: [
-        'Micro-Dosing Fitness™ Method',
+        'High intensity-low time sessions',
         '45-Minute Sessions',
-        'Functional Strength Focus',
+        'hypertrophy & strength focused',
       ],
     },
     {
@@ -32,7 +32,7 @@ export default function Programs() {
       features: [
         'Advanced Macro Calculator',
         'Nutrient Timing Protocols',
-        'Grab-and-Go Meal Plans',
+        'Sustainable Macro Education',
       ],
     },
     {

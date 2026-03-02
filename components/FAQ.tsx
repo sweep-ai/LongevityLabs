@@ -10,7 +10,7 @@ export default function FAQ() {
   const faqs = [
     {
       question: 'Is this program just for bodybuilders?',
-      answer: 'Absolutely not. While we use advanced hypertrophy principles, the Longevity Lab is specifically designed for busy professionals over 35. Our goal is functional strength, hormone optimization, and sustainable longevity, not just looking big on stage. We build bodies that perform in the boardroom and the bedroom.',
+      answer: 'Absolutely not. While we use advanced hypertrophy principles, the Third Path is specifically designed for busy professionals over 35. Our goal is functional strength, hormone optimisation, and sustainable longevity, not just looking big on stage. We build bodies that perform in the boardroom and the bedroom.',
     },
     {
       question: 'I have low T. Can this really help without TRT?',
@@ -22,7 +22,7 @@ export default function FAQ() {
     },
     {
       question: 'What makes this different from other coaching?',
-      answer: 'Most coaches give you a cookie-cutter meal plan and a workout PDF. Longevity Lab provides a holistic ecosystem. We track your biomarkers, sleep quality, and recovery scores. You get direct access to Dwayne and the team for real-time adjustments. It\'s not just coaching; it\'s bio-hacking management for high-performers.',
+      answer: 'Most coaches give you a cookie-cutter meal plan and a workout PDF. The Third Path provides a holistic ecosystem. We track your biomarkers, sleep quality, and recovery scores. You get direct access to Dwayne and the team for real-time adjustments. It\'s not just coaching; it\'s bio-hacking management for high-performers.',
     },
     {
       question: 'Is there a guarantee?',

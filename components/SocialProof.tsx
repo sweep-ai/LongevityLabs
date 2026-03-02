@@ -17,8 +17,7 @@ export default function SocialProof() {
       },
       badge: 'Metabolism Fixed',
       icon: 'trending_up',
-      beforeImage: '/assets/tranfo2.jpg',
-      afterImage: '/assets/tranfo2.jpg',
+      afterImage: '/assets/tranfo2.jpg'
     },
     {
       name: 'Phillip',
@@ -31,8 +30,7 @@ export default function SocialProof() {
       },
       badge: 'Age is Just a Number',
       icon: 'fitness_center',
-      beforeImage: '/assets/transfo3.jpg',
-      afterImage: '/assets/transfo3.jpg',
+      afterImage: '/assets/transfo3.jpg'
     },
     {
       name: 'Mickey',
@@ -43,9 +41,8 @@ export default function SocialProof() {
         weight: '16 Week Recomp',
         bodyFat: 'Photoshoot Ready',
       },
-      badge: 'Photoshoot Ready',
+      badge: 'Photoshoot Ready',  
       icon: 'camera_alt',
-      beforeImage: '/assets/transfo4.jpg',
       afterImage: '/assets/transfo4.jpg',
     },
   ]
@@ -71,23 +68,7 @@ export default function SocialProof() {
                 className="bg-surface-dark border border-gray-800 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1"
               >
                 {/* Before/After Images */}
-                <div className="grid grid-cols-2 gap-0.5 h-64 md:h-80 relative">
-                  <div className="relative h-full w-full bg-gray-800 overflow-hidden">
-                    {(testimonial as any).beforeImage ? (
-                      <img 
-                        src={(testimonial as any).beforeImage} 
-                        alt="Before" 
-                        className="w-full h-full object-cover filter grayscale contrast-125 opacity-90"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <span className="material-icons text-4xl text-gray-700">person</span>
-                      </div>
-                    )}
-                    <span className="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">
-                      Before
-                    </span>
-                  </div>
+                <div className="h-64 md:h-80 relative">
                   <div className="relative h-full w-full bg-gray-800 overflow-hidden">
                     {(testimonial as any).afterImage ? (
                       <img 
