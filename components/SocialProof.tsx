@@ -7,17 +7,17 @@ export default function SocialProof() {
 
   const testimonials = [
     {
-      name: 'Lorna',
+      name: 'Mickey',
       age: null,
-      role: 'Former Bodybuilder',
-      quote: 'After years of restrictive diets and destroyed metabolism, I finally found freedom. In 5 months, I dropped 17kg and completely recomposed my body. No more 15,000 steps or hours of cardio - just smart training and proper nutrition. My metabolism is fixed and my confidence is back.',
+      role: 'Athlete',
+      quote: 'I came to Dwayne with one goal: get absolutely jacked for my first photoshoot. Over 16 weeks, we completely recomped my body. The transformation was everything I hoped for. When I\'m ready to get back in shape, I know exactly where I\'m going.',
       results: {
-        weight: 'Lost 17kg',
-        bodyFat: '88kg → 71kg',
+        weight: '16 Week Recomp',
+        bodyFat: 'Photoshoot Ready',
       },
-      badge: 'Metabolism Fixed',
-      icon: 'trending_up',
-      afterImage: '/assets/tranfo2.jpg'
+      badge: 'Photoshoot Ready',  
+      icon: 'camera_alt',
+      afterImage: '/assets/transfo4.jpg',
     },
     {
       name: 'Phillip',
@@ -33,17 +33,17 @@ export default function SocialProof() {
       afterImage: '/assets/transfo3.jpg'
     },
     {
-      name: 'Mickey',
+      name: 'Lorna',
       age: null,
-      role: 'Athlete',
-      quote: 'I came to Dwayne with one goal: get absolutely jacked for my first photoshoot. Over 16 weeks, we completely recomped my body. The transformation was everything I hoped for. When I\'m ready to get back in shape, I know exactly where I\'m going.',
+      role: 'Former Bodybuilder',
+      quote: 'After years of restrictive diets and destroyed metabolism, I finally found freedom. In 5 months, I dropped 17kg and completely recomposed my body. No more 15,000 steps or hours of cardio - just smart training and proper nutrition. My metabolism is fixed and my confidence is back.',
       results: {
-        weight: '16 Week Recomp',
-        bodyFat: 'Photoshoot Ready',
+        weight: 'Lost 17kg',
+        bodyFat: '88kg → 71kg',
       },
-      badge: 'Photoshoot Ready',  
-      icon: 'camera_alt',
-      afterImage: '/assets/transfo4.jpg',
+      badge: 'Metabolism Fixed',
+      icon: 'trending_up',
+      afterImage: '/assets/tranfo2.jpg'
     },
   ]
 
